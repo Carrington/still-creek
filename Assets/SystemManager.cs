@@ -18,6 +18,7 @@ namespace Managers {
 
 		void Start() 
 		{
+			//TODO finish this so Managers (and therefore streams) are discoverable and added to the streamsbank dynamically
 			var type = typeof(IManager);
 			var managerClasses = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (s => s.GetTypes ()).Where (p => type.IsAssignableFrom (p) && !p.IsInterface);
 
