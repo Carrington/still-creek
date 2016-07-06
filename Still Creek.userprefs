@@ -1,0 +1,30 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SystemManager.cs">
+    <Files>
+      <File FileName="../New Unity Project/Assets/Example1.cs" Line="1" Column="1" />
+      <File FileName="../Downloads/UniRxSimple-master/Assets/Example2.cs" Line="20" Column="60" />
+      <File FileName="../Downloads/UniRxSimple-master/Assets/Example3.cs" Line="32" Column="4" />
+      <File FileName="Assets/SystemManager.cs" Line="26" Column="2" />
+      <File FileName="Assets/TimeManager.cs" Line="16" Column="63" />
+      <File FileName="Assets/Interfaces/IManager.cs" Line="9" Column="39" />
+      <File FileName="Assets/ClockManager.cs" Line="11" Column="60" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True" />
+          <Node name="Assembly-UnityScript" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Catchpoint exceptionName="System.ArgumentException" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
