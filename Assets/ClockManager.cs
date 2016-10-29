@@ -21,6 +21,9 @@ namespace Managers {
 			this.requestedStreams = new List<string> ();
 
 			this.requestedStreams.Add ("minutes");
+
+			this.minutes.Value = 0;
+			this.hours.Value = 0;
 		}
 
 		public void SubscribeToStreams(Dictionary<string, object> streamsBank) 
@@ -45,6 +48,13 @@ namespace Managers {
 		{
 			return minutesStream.Subscribe(minute => {
 				this.minutes.Value = minute;
+				if (this.minutes.Value >= 60) {
+					this.minutes.Value = 0;
+					this.hours.Value += 1;
+					if (this.hours.Value >= 24) {
+						this.hours.Value = 0;
+					}
+				}
 			});
 		}
 	}

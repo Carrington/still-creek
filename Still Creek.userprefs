@@ -1,21 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SystemManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CommunityManager.cs">
     <Files>
       <File FileName="../New Unity Project/Assets/Example1.cs" Line="1" Column="1" />
-      <File FileName="../Downloads/UniRxSimple-master/Assets/Example2.cs" Line="20" Column="60" />
+      <File FileName="../Downloads/UniRxSimple-master/Assets/Example2.cs" Line="1" Column="1" />
       <File FileName="../Downloads/UniRxSimple-master/Assets/Example3.cs" Line="32" Column="4" />
-      <File FileName="Assets/SystemManager.cs" Line="26" Column="2" />
-      <File FileName="Assets/TimeManager.cs" Line="16" Column="63" />
-      <File FileName="Assets/Interfaces/IManager.cs" Line="9" Column="39" />
-      <File FileName="Assets/ClockManager.cs" Line="11" Column="60" />
+      <File FileName="Assets/SystemManager.cs" Line="10" Column="62" />
+      <File FileName="Assets/TimeManager.cs" Line="57" Column="38" />
+      <File FileName="Assets/Interfaces/IManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/ClockManager.cs" Line="61" Column="2" />
+      <File FileName="Assets/CommunityManager.cs" Line="68" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True" />
-          <Node name="Assembly-UnityScript" expanded="True" selected="True">
-            <Node name="References" expanded="True" />
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="CommunityManager.cs" selected="True" />
           </Node>
         </State>
       </Pad>
