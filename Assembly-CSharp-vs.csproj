@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\ClockManager.cs" />
      <Compile Include="Assets\CommunityManager.cs" />
+     <Compile Include="Assets\Entities\CharacterInfo.cs" />
+     <Compile Include="Assets\Events\Arrival.cs" />
+     <Compile Include="Assets\Events\Departure.cs" />
      <Compile Include="Assets\Interfaces\IManager.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />

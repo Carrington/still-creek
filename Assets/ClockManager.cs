@@ -1,61 +1,61 @@
 using UniRx;
+using UniRx.Operators;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Managers {
+	public struct Clock {
+		public readonly hour;
+		public readonly minute;
+
+		public Clock(hour, minute) {
+			this.hour = hour;
+			this.minute = minute;
+		}
+	}
+
 	//Implement means to dilate/contract time
 	public class ClockManager : IManager
 	{
-		public Dictionary<string, object> providedStreams { get; private set; }
-		public List<string> requestedStreams { get; private set; }
-		public static string managerKey = "ClockManager";
-		public IntReactiveProperty minutes { get; private set; }
-		public IntReactiveProperty hours { get; private set; }
-		
-		public ClockManager ()
+		private IObservable<int> ticks;
+
+		public ClockManager (IObservable<int> tickStream)
 		{
 			Debug.Log ("Loaded ClockManager");
-			this.providedStreams = new Dictionary<string, object> ();
-			this.requestedStreams = new List<string> ();
 
-			this.requestedStreams.Add ("minutes");
-
-			this.minutes.Value = 0;
-			this.hours.Value = 0;
+			this.ticks = tickStream;
 		}
 
-		public void SubscribeToStreams(Dictionary<string, object> streamsBank) 
-		{
-			this.requestedStreams.ForEach (delegate(string streamKey) {
-				object stream = streamsBank.Keys.Where(key => key.Equals(streamKey)).ToList().FirstOrDefault();
+		public IConnectableObservable<Clock> ClockStream () {
+			return Observable.Create<Clock> (observer => {
+				var minute = 0;
+				var hour = 0;
 
-				if (stream != null) {
-					switch (streamKey) 
-					{
-						case "minutes":
-							this.SubscribeToMinutes((IntReactiveProperty) stream);
-							break;
-						default:
-							break;
+				//TODO get time from save
+				//TODO pause and unpause time
+				//TODO should the time multiplier and stuff go here?
+				var tickSub = this.ticks.Subscribe(_ => {
+					minute++;
+					if (minute > 59) {
+						minute = 0;
+						hour++;
 					}
-				}
-			});
-		}
-
-		private IDisposable SubscribeToMinutes (IntReactiveProperty minutesStream)
-		{
-			return minutesStream.Subscribe(minute => {
-				this.minutes.Value = minute;
-				if (this.minutes.Value >= 60) {
-					this.minutes.Value = 0;
-					this.hours.Value += 1;
-					if (this.hours.Value >= 24) {
-						this.hours.Value = 0;
+					if (hour > 23) {
+						hours = 0;
 					}
-				}
-			});
-		}
+
+					Clock clock = new Clock(hour, minute);
+					observer.OnNext(clock);
+				},
+				observer.OnError,
+				observer.OnCompleted);
+
+				return Disposable.Create(() => {
+					tickSub.Dispose();
+				});
+			})
+		} 
 	}
 }

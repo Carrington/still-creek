@@ -9,11 +9,8 @@ namespace Managers {
 	{
 		public FloatReactiveProperty frameToMinuteConversion { get; set; }
 		private IConnectableObservable<long> frameStream;
-		private IntReactiveProperty currentMinute;
-		private IntReactiveProperty currentDay;
-		public static string managerKey = "TimeManager";
-		public Dictionary<string, object> providedStreams { get; private set; }
-		public List<string> requestedStreams { get; private set; }
+		public IntReactiveProperty currentMinute;
+		public IntReactiveProperty currentDay;
 		private IDisposable internalFrameStreamSubscription;
 
 
@@ -40,26 +37,20 @@ namespace Managers {
 					}
 					Debug.Log (string.Format("Current Minute {0}", this.currentMinute.Value));
 					Debug.Log (string.Format("Current Day {0}", this.currentDay.Value));
-				}); 
-
-			this.requestedStreams = new List<string> ();
-			this.providedStreams = new Dictionary<string, object> ();
-
-			this.providedStreams.Add ("frames", (object) this.frameStream);
-			this.providedStreams.Add ("minutes", (object) this.currentMinute);
-			this.providedStreams.Add ("days", (object) this.currentDay);
-
-			this.Start (); //TODO temporary
+				},
+				() => this.DisposeStream (this.internalFrameStreamSubscription),
+				ex => this.ErroredStream (this.frameStream, ex)
+			); 
 		}
 
-		public IDisposable Start ()
+		private void DisposeStream (IDisposable subscription)
 		{
-			return this.frameStream.Connect ();
+			subscription.Dispose ();
 		}
 
-		public void Stop (IDisposable connection)
+		private void ErroredStream (IDisposable subscription, Exception ex)
 		{
-			connection.Dispose ();
+			subscription.Dispose ();
 		}
 	}
 }

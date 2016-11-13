@@ -63,8 +63,11 @@
      <Compile Include="Assets\Plugins\UniRx\Examples\Sample09_EventHandling.cs" />
      <Compile Include="Assets\Plugins\UniRx\Examples\Sample10_MainThreadDispatcher.cs" />
      <Compile Include="Assets\Plugins\UniRx\Examples\Sample11_Logger.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Examples\Sample12_ReactiveProperty.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Examples\Sample13_ToDoApp.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Asynchronous\WebRequestExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\BooleanDisposable.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\CancellationDisposable.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\CompositeDisposable.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\DictionaryDisposable.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\Disposable.cs" />
@@ -91,6 +94,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\Notifiers\MessageBroker.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Notifiers\ScheduledNotifier.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Aggregate.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Awaiter.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Binding.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Blocking.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Concatenate.cs" />
@@ -150,6 +154,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Scan.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Select.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\SelectMany.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\SelectWhere.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Single.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Skip.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\SkipUntil.cs" />
@@ -177,6 +182,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Wait.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\WhenAll.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Where.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\WhereSelect.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\WithLatestFrom.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Zip.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\ZipLatest.cs" />
@@ -199,16 +205,20 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\System\IProgress.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\System\Tuple.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\System\Unit.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\Tasks\TaskObservableExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\TimeInterval.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\Timestamped.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\AotSafeExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\AsyncOperationExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\CancellationToken.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\CoroutineAsyncBridge.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\LogEntry.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\LogEntryExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\Logger.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\ObservableDebugExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\ObservableLogger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\UnityDebugSink.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\FrameInterval.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\InspectableReactiveProperty.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\InspectorDisplayDrawer.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\LazyTask.cs" />
@@ -219,8 +229,11 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ObservableMonoBehaviour.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ObservableWWW.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ObserveExtensions.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\BatchFrame.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\DelayFrame.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\DelayFrameSubscription.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\FrameInterval.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\FrameTimeInterval.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\FromCoroutine.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\RepeatUntil.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\SampleFrame.cs" />
@@ -234,6 +247,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ReactiveDictionary.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ReactiveProperty.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\ScenePlaybackDetector.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Toolkit\ObjectPool.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableAnimatorTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableBeginDragTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableCancelTrigger.cs" />
@@ -252,6 +266,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableLateUpdateTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableMouseTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableMoveTrigger.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableParticleTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservablePointerClickTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservablePointerDownTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservablePointerEnterTrigger.cs" />
@@ -272,6 +287,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableUpdateTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableVisibleTrigger.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\TypedMonoBehaviour.cs" />
+     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\UniRxSynchronizationContext.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\UnityEqualityComparer.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\UnityEventExtensions.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\UnityGraphicExtensions.cs" />

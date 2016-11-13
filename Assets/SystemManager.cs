@@ -1,4 +1,5 @@
 using UnityEngine;
+using UniRx;
 using System;
 using System.Linq;
 using System.Collections;
@@ -7,10 +8,10 @@ using System.Collections.Generic;
 namespace Managers {
 
 	public class SystemManager : MonoBehaviour {
-		private Dictionary<string, IManager> managers { get; set; }
+		public TimeManager timeManager { get; private set; }
+		public ClockManager clockManager { get; private set; }
+		public CalendarManager calendarManager { get; private set; }
 
-		//the streamsbank should be an ObservableCollection (of observables!) and fire to interested subscribers whenever a new stream is registered as provided...
-		
 		void Awake() 
 		{
 			DontDestroyOnLoad(transform.gameObject);
@@ -18,18 +19,46 @@ namespace Managers {
 
 		void Start() 
 		{
-			//TODO finish this so Managers (and therefore streams) are discoverable and added to the streamsbank dynamically
-			var type = typeof(IManager);
-			var managerClasses = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (s => s.GetTypes ()).Where (p => type.IsAssignableFrom (p) && !p.IsInterface);
+			float timeConversionFactor = 2.0f;
 
-			//Make conversion factor configuration based
-			managers.Add (Managers.TimeManager.managerKey, new Managers.TimeManager (35.0f));
-			managers.Add (Managers.ClockManager.managerKey, new Managers.ClockManager ());
-		}
+			this.timeManager = new TimeManager(timeConversionFactor);
 
-		private void RegisterStreams()
-		{
+			this.clockManager = new ClockManager(this.timeManager.currentMinute);
 
+			var clockConnectable = this.clockManager.ClockStream.Publish();
+
+			this.calendarManager = new CalendarManager(clockConnectable);
+
+			var calendarConnectable = this.calendarManager.CalendarStream.Publish();
+
+			//create weather manager (calendar)
+			//create communtiy stream for town (tick, clock, calendar)
+				//community stream reads community manifest for town
+				//community stream instantiates character streams for town (tick, character file location)
+					//characters instantiate schedules (clock), action (tick, schedule), tolerances (), outlooks (), party profile ()
+						//schedule runs
+						//action receives tick and schedule and reduces to current action
+				//community stream informs characters about other characters
+					//characters instatiate relationships (other character)
+			//create community manager for wilderness/other locales (tick) repeat above
+			//create interaction manager (communities)
+			//create political manager (town communtiy) expansion
+			//create plot manager (communities, interactions)
+				//plot manager determines volatile roles and informs those characters to mutate
+			//create map manager
+				//populate tiles
+			//create input manager
+				//input into combat informs plot manager, informs combat manager
+				//input into conversation 
+				//input to plant
+				//input to water/maintain?
+				//input to build
+				//input to purchase
+				//input to pilot
+				//input to menu
+			
+			clockConnectable.Connect();
+			calendarConnectable.Connect();
 		}
 	}
  
