@@ -295,6 +295,7 @@
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\YieldInstructionCache.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityWinRTBridge\Thread.cs" />
      <Compile Include="Assets\Plugins\UniRx\Scripts\UnityWinRTBridge\ThreadPoolScheduler_UnityWinRT.cs" />
+     <None Include="Assets\JsonDotNet\link.xml" />
      <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
@@ -319,6 +320,9 @@
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/home/luciusagatho/Still Creek/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/opt/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

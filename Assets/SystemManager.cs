@@ -31,7 +31,8 @@ namespace Managers {
 
 			var calendarConnectable = this.calendarManager.CalendarStream.Publish();
 
-			//create weather manager (calendar)
+
+
 			//create communtiy stream for town (tick, clock, calendar)
 				//community stream reads community manifest for town
 				//community stream instantiates character streams for town (tick, character file location)
