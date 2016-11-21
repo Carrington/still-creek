@@ -53,7 +53,6 @@
      <Compile Include="Assets\Events\Arrival.cs" />
      <Compile Include="Assets\Events\Departure.cs" />
      <Compile Include="Assets\Interfaces\IManager.cs" />
-     <Compile Include="Assets\Support\Month.cs" />
      <Compile Include="Assets\SystemManager.cs" />
      <Compile Include="Assets\TimeManager.cs" />
      <Compile Include="Assets\WeatherManager.cs" />

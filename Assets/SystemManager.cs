@@ -11,6 +11,7 @@ namespace Managers {
 		public TimeManager timeManager { get; private set; }
 		public ClockManager clockManager { get; private set; }
 		public CalendarManager calendarManager { get; private set; }
+		public WeatherManager weatherManager { get; private set; }
 
 		void Awake() 
 		{
@@ -31,7 +32,9 @@ namespace Managers {
 
 			var calendarConnectable = this.calendarManager.CalendarStream.Publish();
 
+			this.weatherManager = new WeatherManager(calendarConnectable);
 
+			var weatherConnectable = this.weatherManager.WeatherStream.Publish();
 
 			//create communtiy stream for town (tick, clock, calendar)
 				//community stream reads community manifest for town
@@ -60,6 +63,7 @@ namespace Managers {
 			
 			clockConnectable.Connect();
 			calendarConnectable.Connect();
+			weatherConnectable.Connect();
 		}
 	}
  
