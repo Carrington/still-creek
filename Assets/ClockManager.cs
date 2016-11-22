@@ -20,9 +20,9 @@ namespace Managers {
 	//Implement means to dilate/contract time
 	public class ClockManager : IManager
 	{
-		private IObservable<int> ticks;
+		private IObservable<long> ticks;
 
-		public ClockManager (IObservable<int> tickStream)
+		public ClockManager (IObservable<long> tickStream)
 		{
 			Debug.Log ("Loaded ClockManager");
 
@@ -48,6 +48,8 @@ namespace Managers {
 					}
 
 					Clock clock = new Clock(hour, minute);
+					Debug.Log(string.Format ("Clock Minute {0}", clock.minute));
+					Debug.Log(string.Format ("Clock Hour {0}", clock.hour));
 					observer.OnNext(clock);
 				},
 				observer.OnError,

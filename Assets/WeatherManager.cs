@@ -66,6 +66,9 @@ namespace Managers
 						}
 					}
 
+					Debug.Log(String.Format("Weather is doing {0}", weather));
+					Debug.Log(String.Format("Hot is doing {0}", heat));
+
 					observer.OnNext(new Weather(weather, heat));
 				},
 				observer.OnError,

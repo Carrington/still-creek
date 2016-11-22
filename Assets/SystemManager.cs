@@ -24,7 +24,9 @@ namespace Managers {
 
 			this.timeManager = new TimeManager(timeConversionFactor);
 
-			this.clockManager = new ClockManager(this.timeManager.currentMinute);
+			var tickConnectable = this.timeManager.TickStream().Publish();
+
+			this.clockManager = new ClockManager(tickConnectable);
 
 			var clockConnectable = this.clockManager.ClockStream().Publish();
 
@@ -60,7 +62,8 @@ namespace Managers {
 				//input to purchase
 				//input to pilot
 				//input to menu
-			
+
+			tickConnectable.Connect();
 			clockConnectable.Connect();
 			calendarConnectable.Connect();
 			weatherConnectable.Connect();

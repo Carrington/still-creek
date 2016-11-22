@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using UnityEngine;
 using UniRx;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -30,13 +31,15 @@ namespace Managers
 
 		public CalendarManager (IConnectableObservable<Clock> clock)
 		{
+			UnityEngine.Debug.Log("Loaded CalendarManager");
 			this.clock = clock;
-			this.CalendarConfigDocPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\config\calendar.json";
-			using (StreamReader file = File.OpenText(@"c:\videogames.json"))
-			using (JsonTextReader reader = new JsonTextReader(file))
-			{
-				this.calendarConfig = (JObject)JToken.ReadFrom(reader);
-			}
+			//TODO I am positive this is not the Unity-Way of doing config.
+//			this.CalendarConfigDocPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"/config/calendar.json";
+//			using (StreamReader file = File.OpenText(this.CalendarConfigDocPath))
+//			using (JsonTextReader reader = new JsonTextReader(file))
+//			{
+//				this.calendarConfig = (JObject)JToken.ReadFrom(reader);
+//			}
 		}
 
 		public IObservable<EngineDate> CalendarStream ()
@@ -50,6 +53,7 @@ namespace Managers
 									Where(clock => { return (clock.minute == 0 && clock.hour == 0); }).
 									Subscribe(
 										_ => { 
+											//TODO there is a better way to do this.
 											day++;
 											if (day > 90) {
 												day = 1;
