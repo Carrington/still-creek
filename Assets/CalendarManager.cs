@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using UniRx;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 
@@ -31,23 +32,23 @@ namespace Managers
 		{
 			this.clock = clock;
 			this.CalendarConfigDocPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\config\calendar.json";
-			using (StreamReader file = File.OpenText(@"c:\videogames.json"));
+			using (StreamReader file = File.OpenText(@"c:\videogames.json"))
 			using (JsonTextReader reader = new JsonTextReader(file))
 			{
 				this.calendarConfig = (JObject)JToken.ReadFrom(reader);
 			}
 		}
 
-		public IConnectableObservable<EngineDate> CalendarStream ()
+		public IObservable<EngineDate> CalendarStream ()
 		{
 			return Observable.Create<EngineDate> (observer => {
 				var day = 1;
 				var month = 1;
 				var year = 1;
 
-				var clockSub = this.clock
-									.Where(clock => { clock.Minute == 0 && clock.Hour == 0; })
-									.Subscribe(
+				var clockSub = this.clock.
+									Where(clock => { return (clock.minute == 0 && clock.hour == 0); }).
+									Subscribe(
 										_ => { 
 											day++;
 											if (day > 90) {
@@ -61,7 +62,7 @@ namespace Managers
 
 											EngineDate date = new EngineDate(year, month, day);
 
-											observer.OnNext(EngineDate);
+											observer.OnNext(date);
 										},
 										observer.OnError,
 										observer.OnCompleted

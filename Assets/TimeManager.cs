@@ -37,9 +37,7 @@ namespace Managers {
 					}
 					Debug.Log (string.Format("Current Minute {0}", this.currentMinute.Value));
 					Debug.Log (string.Format("Current Day {0}", this.currentDay.Value));
-				},
-				() => this.DisposeStream (this.internalFrameStreamSubscription),
-				ex => this.ErroredStream (this.frameStream, ex)
+				}
 			); 
 		}
 

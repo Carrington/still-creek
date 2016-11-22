@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Managers {
-	public struct Clock {
-		public readonly hour;
-		public readonly minute;
+	public struct Clock 
+	{
+		public readonly int hour;
+		public readonly int minute;
 
-		public Clock(hour, minute) {
+		public Clock(int hour, int minute) {
 			this.hour = hour;
 			this.minute = minute;
 		}
@@ -28,7 +29,7 @@ namespace Managers {
 			this.ticks = tickStream;
 		}
 
-		public IConnectableObservable<Clock> ClockStream () {
+		public IObservable<Clock> ClockStream () {
 			return Observable.Create<Clock> (observer => {
 				var minute = 0;
 				var hour = 0;
@@ -43,7 +44,7 @@ namespace Managers {
 						hour++;
 					}
 					if (hour > 23) {
-						hours = 0;
+						hour = 0;
 					}
 
 					Clock clock = new Clock(hour, minute);
@@ -55,7 +56,7 @@ namespace Managers {
 				return Disposable.Create(() => {
 					tickSub.Dispose();
 				});
-			})
+			});
 		} 
 	}
 }

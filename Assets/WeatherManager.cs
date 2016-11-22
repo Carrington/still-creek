@@ -31,38 +31,38 @@ namespace Managers
 	public class WeatherManager
 	{
 
-		private readonly IConnectableObservable<Calendar> calendar;
+		private readonly IConnectableObservable<EngineDate> dates;
 
-		public WeatherManager (IConnectableObservable<Caendar> calendar)
+		public WeatherManager (IConnectableObservable<EngineDate> dates)
 		{
 			Debug.Log ("Loaded WeatherManager");
 
-			this.calendar = calendar;
+			this.dates = dates;
 		}
 
-		public IConnectableObservable<Weather> WeatherStream () {
+		public IObservable<Weather> WeatherStream () {
 			return Observable.Create<Weather> (observer => {
 				//TODO weather should be configurable
 				//TODO weather should be more erratic based on how you're doing against the Forgotten One
 				//TODO weather should be more harsh with higher difficulty
-				var calendarSub = this.calendar.Subscribe(date => {
-					WeatherPattern weather = 0;
-					HeatPattern heat = 3;
-					var rnd = new Random();
+				var datesSub = this.dates.Subscribe(date => {
+					WeatherPattern weather = WeatherPattern.Clear;
+					HeatPattern heat = HeatPattern.Temperate;
+					var rnd = new System.Random();
 					var weatherRoll = rnd.Next(1, 100);
 
 					//TODO all seasons after Spring!
 					if (date.Month == 1) {
 						if (weatherRoll < 20) {
-							weather = 4;
+							weather = WeatherPattern.HeavyRain;
 						} else if (weatherRoll < 40) {
-							weather = 3;
+							weather = WeatherPattern.Thunderstorm;
 						} else if (weatherRoll < 60) {
-							weather = 2;
+							weather = WeatherPattern.LightRain;
 						} else if  (weatherRoll < 80) {
-							weather = 1;
+							weather = WeatherPattern.Overcast;
 						} else if (weatherRoll < 100) {
-							weather = 0;
+							weather = WeatherPattern.Clear;
 						}
 					}
 
@@ -72,7 +72,7 @@ namespace Managers
 				observer.OnCompleted);
 
 				return Disposable.Create(() => {
-					calendarSub.Dispose();
+					datesSub.Dispose();
 				});
 			});
 		}

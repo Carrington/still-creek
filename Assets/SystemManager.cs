@@ -26,15 +26,15 @@ namespace Managers {
 
 			this.clockManager = new ClockManager(this.timeManager.currentMinute);
 
-			var clockConnectable = this.clockManager.ClockStream.Publish();
+			var clockConnectable = this.clockManager.ClockStream().Publish();
 
 			this.calendarManager = new CalendarManager(clockConnectable);
 
-			var calendarConnectable = this.calendarManager.CalendarStream.Publish();
+			var calendarConnectable = this.calendarManager.CalendarStream().Publish();
 
 			this.weatherManager = new WeatherManager(calendarConnectable);
 
-			var weatherConnectable = this.weatherManager.WeatherStream.Publish();
+			var weatherConnectable = this.weatherManager.WeatherStream().Publish();
 
 			//create communtiy stream for town (tick, clock, calendar)
 				//community stream reads community manifest for town
