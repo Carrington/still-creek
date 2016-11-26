@@ -49,10 +49,13 @@
      <Compile Include="Assets\CalendarManager.cs" />
      <Compile Include="Assets\ClockManager.cs" />
      <Compile Include="Assets\CommunityManager.cs" />
-     <Compile Include="Assets\Entities\CharacterInfo.cs" />
-     <Compile Include="Assets\Events\Arrival.cs" />
-     <Compile Include="Assets\Events\Departure.cs" />
+     <Compile Include="Assets\Entities\CommunityMember.cs" />
      <Compile Include="Assets\Interfaces\IManager.cs" />
+     <Compile Include="Assets\SocialEvents\Combat.cs" />
+     <Compile Include="Assets\SocialEvents\Conversation.cs" />
+     <Compile Include="Assets\SocialEvents\Fight.cs" />
+     <Compile Include="Assets\SocialEvents\ISocialEvent.cs" />
+     <Compile Include="Assets\SocialEvents\Sexual.cs" />
      <Compile Include="Assets\SystemManager.cs" />
      <Compile Include="Assets\TimeManager.cs" />
      <Compile Include="Assets\WeatherManager.cs" />

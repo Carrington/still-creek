@@ -24,37 +24,49 @@ namespace Managers {
 
 	public class CommunityManager
 	{
-		private IObservable<int> ticks;
+		private IObservable<long> ticks;
 		private IObservable<Clock> clock;
 		private IObservable<EngineDate> dates;
 
-		public CommunityManager (IObservable<int> ticks, IObservable<Clock> clock, IObservable<EngineDate> dates)
+		public CommunityManager (IObservable<long> ticks, IObservable<Clock> clock, IObservable<EngineDate> dates, string communityIdentifier)
 		{
+			Debug.Log("Loaded CommunityManager");
+			//use community identifier to get the manifest
+			this.SetupCommunityMembers("town");
+
 			this.ticks = ticks;
 			this.clock = clock;
 			this.dates = dates;
 		}
 
-		public IObservable<CommunityEvent> CommunityStream () {
+		public IObservable<CommunityEvent> CommunityStream () 
+		{
 			return Observable.Create<CommunityEvent> (observer => {
-
-				//CommunityMember is struct of observables
-				Array<IObservable<CommunityMember>> = this.SetupCommunityMembers();
-
+						
 				var datesSubscription = this.dates.Subscribe(date => {
 					//Check something to see if it's a festival
 				},
-				observer.OnComplete,
-				observer.OnError);
+				observer.OnError,
+				observer.OnCompleted);
 
 				return Disposable.Create(() => {
-					dateSubscription.dispose();
+					datesSubscription.Dispose();
 				});
 			});
 		}
 
-		private Array<IObservable<CommunityMember>> SetupCommunityMembers() {
-      
+		private Dictionary<string, CommunityMember> SetupCommunityMembers (string communityIdentifier)
+		{
+			Dictionary<string, CommunityMember> dictionary = new Dictionary<string, CommunityMember> ();
+
+			if (communityIdentifier == "town") {
+
+				CommunityMember adeleen = new CommunityMember(this.ticks, this.clock, this.dates, "/home/luciusagatho/still-creek-data/characters/town/adeleen.json");
+
+				return new IObservable<CommunityMember>[] { adeleen };
+			}
+
+			return new IObservable<CommunityMember>[0];
 		}
 	}
 }

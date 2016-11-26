@@ -18,7 +18,7 @@ namespace Managers {
 
 		public IObservable<long> TickStream ()
 		{
-			return Observable.IntervalFrame (20);
+			return Observable.IntervalFrame (5);
 		}
 	}
 }

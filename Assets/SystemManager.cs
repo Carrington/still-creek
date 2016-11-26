@@ -12,6 +12,7 @@ namespace Managers {
 		public ClockManager clockManager { get; private set; }
 		public CalendarManager calendarManager { get; private set; }
 		public WeatherManager weatherManager { get; private set; }
+		public CommunityManager communityManager { get; private set; }
 
 		void Awake() 
 		{
@@ -38,14 +39,17 @@ namespace Managers {
 
 			var weatherConnectable = this.weatherManager.WeatherStream().Publish();
 
+			this.communityManager = new CommunityManager(tickConnectable, clockConnectable, calendarConnectable, "town");
+
 			//create communtiy stream for town (tick, clock, calendar)
 				//community stream reads community manifest for town
 				//community stream instantiates character streams for town (tick, character file location)
 					//characters instantiate schedules (clock), action (tick, schedule), tolerances (), outlooks (), party profile ()
 						//schedule runs
 						//action receives tick and schedule and reduces to current action
+
 				//community stream informs characters about other characters
-					//characters instatiate relationships (other character)
+					//characters create relationships (other character)
 			//create community manager for wilderness/other locales (tick) repeat above
 			//create interaction manager (communities)
 			//create political manager (town communtiy) expansion
