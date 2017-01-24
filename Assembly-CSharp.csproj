@@ -3,9 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
     <ProjectGuid>{F91682C2-B8D1-46A8-0C5E-A95CA2330434}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -34,70 +33,73 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/opt/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\opt\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/opt/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\opt\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CalendarManager.cs" />
-     <Compile Include="Assets\ClockManager.cs" />
-     <Compile Include="Assets\CommunityManager.cs" />
-     <Compile Include="Assets\Entities\CommunityMember.cs" />
-     <Compile Include="Assets\Interfaces\IManager.cs" />
-     <Compile Include="Assets\SocialEvents\Combat.cs" />
-     <Compile Include="Assets\SocialEvents\Conversation.cs" />
-     <Compile Include="Assets\SocialEvents\Fight.cs" />
-     <Compile Include="Assets\SocialEvents\ISocialEvent.cs" />
-     <Compile Include="Assets\SocialEvents\Sexual.cs" />
-     <Compile Include="Assets\SystemManager.cs" />
-     <Compile Include="Assets\TimeManager.cs" />
-     <Compile Include="Assets\WeatherManager.cs" />
-     <None Include="Assets\JsonDotNet\link.xml" />
-     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.HoloLens">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.VR">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>/home/luciusagatho/Still Creek/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>/opt/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Common">
- <HintPath>/opt/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\CalendarManager.cs" />
+    <Compile Include="Assets\ClockManager.cs" />
+    <Compile Include="Assets\CommunityManager.cs" />
+    <Compile Include="Assets\Entities\CommunityMember.cs" />
+    <Compile Include="Assets\Interfaces\IManager.cs" />
+    <Compile Include="Assets\SocialEvents\Combat.cs" />
+    <Compile Include="Assets\SocialEvents\Conversation.cs" />
+    <Compile Include="Assets\SocialEvents\Fight.cs" />
+    <Compile Include="Assets\SocialEvents\ISocialEvent.cs" />
+    <Compile Include="Assets\SocialEvents\Sexual.cs" />
+    <Compile Include="Assets\SystemManager.cs" />
+    <Compile Include="Assets\TimeManager.cs" />
+    <Compile Include="Assets\WeatherManager.cs" />
+    <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\Advertisements\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\PlaymodeTestsRunner\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityAnalytics\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityPurchasing\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityVR\RuntimeEditor\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>..\..\..\opt\Unity\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Compile Include="Assets\Schedules\CommunityMemberSchedule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{93757A61-2AFE-635B-BEB4-1CDE4E7C7E1D}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{93757A61-2AFE-635B-BEB4-1CDE4E7C7E1D}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -107,5 +109,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
+  <ItemGroup>
+    <Folder Include="Assets\Schedules\" />
+  </ItemGroup>
 </Project>

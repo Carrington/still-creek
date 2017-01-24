@@ -1,9 +1,12 @@
 using UniRx;
 using UnityEngine;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Managers {
 
@@ -59,14 +62,25 @@ namespace Managers {
 		{
 			Dictionary<string, CommunityMember> dictionary = new Dictionary<string, CommunityMember> ();
 
-			if (communityIdentifier == "town") {
+			string manifestLocation = "/home/luciusagatho/still-creek-data/communities/";
 
-				CommunityMember adeleen = new CommunityMember(this.ticks, this.clock, this.dates, "/home/luciusagatho/still-creek-data/characters/town/adeleen.json");
+			manifestLocation = string.Concat (manifestLocation, string.Concat (communityIdentifier, ".json"));
 
-				return new IObservable<CommunityMember>[] { adeleen };
+			using (StreamReader file = File.OpenText (manifestLocation))
+			using (JsonTextReader reader = new JsonTextReader (file)) {
+				JObject communityManifest = (JObject)JToken.ReadFrom (reader);
+				JArray members = (JArray)communityManifest ["members"];
+
+				foreach (var member in members.Children()) {
+					var properties = member.Children<JProperty>();
+					string key = (string)properties.FirstOrDefault(x => x.Name == "key");
+					string memberManifestLocation = (string)properties.FirstOrDefault(x => x.Name == "manifestLocation");
+					CommunityMember memberInstance = new CommunityMember(this.ticks, this.clock, this.dates, memberManifestLocation);
+					dictionary.Add(key, memberInstance);
+				}
 			}
 
-			return new IObservable<CommunityMember>[0];
+			return dictionary;
 		}
 	}
 }
